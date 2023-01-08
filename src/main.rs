@@ -1,6 +1,7 @@
 #![warn(clippy::all, rust_2018_idioms)]
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // hide console window on Windows in release
-
+mod gamestates;
+use gamestates::*;
 mod app;
 use app::*;
 
@@ -37,6 +38,7 @@ fn main() {
         //icon_data: Some(load_icon("assets/favicon.png")),
         ..Default::default()
     };
+    //Todo separate threads for polling for gamestate and app gui
     run_native("Ludo",options,Box::new(|_cc| Box::new(app)));
 }
 
